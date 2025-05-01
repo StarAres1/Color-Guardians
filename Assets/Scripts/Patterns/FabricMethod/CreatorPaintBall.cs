@@ -13,9 +13,9 @@ public class CreatorPaintBall : Creator
     }
 
 
-    public override GameObject createItem(Vector3 spawnPoint)
+    public override GameObject createItem(Vector3 position, Quaternion rotation)
     {
-        GameObject obj = Object.Instantiate(prefab, spawnPoint, Quaternion.identity);
+        GameObject obj = Object.Instantiate(prefab, position, rotation);
 
         Renderer renderer = obj.GetComponent<Renderer>();
 
@@ -23,16 +23,6 @@ public class CreatorPaintBall : Creator
         {
             Color randomColor = GetColor();
             renderer.material.color = randomColor;
-
-            PaintBall paintBall = obj.GetComponent<PaintBall>();
-            if (paintBall != null)
-            {
-                paintBall.GetComponent<Renderer>().material.color = randomColor;
-            }
-        }
-        else
-        {
-            Debug.Log("renderer is null");
         }
 
         return obj;
