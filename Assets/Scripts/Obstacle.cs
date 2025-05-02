@@ -6,4 +6,12 @@ using UnityEngine;
 
 public class Obstacle : Moveable
 {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            GameManager.getInstance().ResetCombo();
+            Destroy(item);
+        }
+    }
 }
