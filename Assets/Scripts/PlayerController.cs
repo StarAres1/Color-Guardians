@@ -11,10 +11,12 @@ public class PlayerController : MonoBehaviour
     Renderer render;
     private int currentLane = 1;
     public bool isGrounded = true;
+    public GameObject platform;
 
     private void Awake()
-    {
-        GameManager.getInstance().setCommands();
+    {        
+        GameManager.getInstance().setCommand(new PaintSkyCommand());
+        GameManager.getInstance().setCommand(new PaintGroundCommand(platform.GetComponent<Platform>()));
     }
 
     void Start()

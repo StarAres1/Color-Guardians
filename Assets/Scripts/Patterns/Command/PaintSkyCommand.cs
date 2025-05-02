@@ -12,6 +12,6 @@ public class PaintSkyCommand : Command
 
     public override void Undo()
     {
-        Camera.main.backgroundColor = new Color(196, 196, 196, 0);
+        Camera.main.backgroundColor = new Color32(196, 196, 196, 0);
     }
 }

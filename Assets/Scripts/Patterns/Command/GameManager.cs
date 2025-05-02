@@ -8,7 +8,11 @@ public class GameManager
     public int combo = 0;
     private GameManager() {}
 
-    private static Command commandPaintSky;
+    private Command commandPaintSky;
+    private Command commandPaintGround;
+    public bool flagSky = false;
+    public bool flagGround = false;
+    List<Command> commands = new List<Command>();
 
     public static GameManager getInstance()
     {
@@ -19,32 +23,41 @@ public class GameManager
         return instance;
     }
 
-    public void setCommands()
+    public void setCommand(Command command)
     {
-        commandPaintSky = new PaintSkyCommand();
+        commands.Add(command);
     }
 
     public void IncreaceCombo()
     {
         combo++;
         Debug.Log($"Текущее комбо: {combo}");
-        PantWorld();
-
+        switch (combo)
+        {
+            case 3:
+                commands[0].Execute();
+                flagSky = true;
+                break;
+            case 4:
+                commands[1].Execute();
+                flagGround = true;
+                break;
+        }
     }
 
     public void ResetCombo()
     {
         combo = 0;
         Debug.Log($"Fail! Комбо сброшено: {combo}");
-        PantWorld();
-    }
-
-    public void PantWorld()
-    {
-        switch (combo)
+        if (flagSky)
         {
-            case 0: commandPaintSky.Undo(); break;
-            case 3: commandPaintSky.Execute(); break;
+            flagSky = false;
+            commands[0].Undo();
+        }
+        if (flagGround)
+        {
+            flagGround = false;
+            commands[1].Undo();
         }
     }
 }
