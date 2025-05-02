@@ -110,5 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d2e1b947e5f1b47beb14fc795a7138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedBall: 2
-  obstacle: {fileID: 2965348295401584267}
+  <item>k__BackingField: {fileID: 2965348295401584267}

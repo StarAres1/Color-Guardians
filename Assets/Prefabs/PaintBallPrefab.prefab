@@ -110,5 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f71885c52c02a640b19e00f410fad5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedBall: 2
-  paintBall: {fileID: 6879849929101083144}
+  <item>k__BackingField: {fileID: 6879849929101083144}
