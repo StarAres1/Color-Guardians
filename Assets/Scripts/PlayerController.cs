@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     private int currentLane = 1;
     public bool isGrounded = true;
 
+    private void Awake()
+    {
+        GameManager.getInstance().setCommands();
+    }
 
     void Start()
     {
